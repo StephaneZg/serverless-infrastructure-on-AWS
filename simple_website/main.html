@@ -1,0 +1,164 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--=============== Remixicons ===============-->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css" rel="stylesheet">
+
+  <!--=============== Css ===============-->
+  <link rel="stylesheet" href="css/style-landing.css" />
+  <link rel="stylesheet" href="css/color-1.css" />
+
+  <!--=============== Skin Colors ===============-->
+  <link rel="icon" href="assets/icon.png" type="image/x-icon" />
+
+  <title>Stephane Zang</title>
+</head>
+
+<body>
+  <!--=============== Header ===============-->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li>
+            <a href="#home" class="nav__link active-link">Hello</a>
+          </li>
+
+          <li>
+            <a target="_blank" href="https://medium.com/@stephane.zangbengono" class="nav__link">Blog</a>
+          </li>
+          <li>
+            <a href="" id="signOutButton" class="signout-dtn nav__link" style="color: brown;">Sign Out</a>
+          </li>
+        </ul>
+
+        <div class="nav__close" id="nav-close">
+          <i class="ri-close-fill"></i>
+        </div>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="ri-menu-fill"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!--=============== Main ===============-->
+  <!--=============== Home ===============-->
+  <section class="home" id="home">
+    <div class="home__container container grid">
+      <img src="assets/icon.png" alt="" class="home__img" />
+
+      <div class="home__data">
+        <h1 class="home__name">Philibert Stephane Zang Bengono_</h1>
+        <p class="home__work">
+          Devops Engineer, Cloud Engineer, Backend Developer
+        </p>
+        <dl class="home__list">
+          <!-- <dt>AGE:</dt>
+              <dd>23</dd> -->
+          <dt>PHONE:</dt>
+          <dd>(237) 657-249-918</dd>
+          <dt>EMAIL:</dt>
+          <dd>stephane.zangbengono@gmail.com</dd>
+          <dt>ADDRESS:</dt>
+          <dd>Yaoundé Centre, Cameroun</dd>
+        </dl>
+        <div class="home__socials">
+          <a href="https://github.com/StephaneZg" target="_blank" class="home__social-link">
+            <i class="ri-github-fill"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/philibert-stephane-zang-bengono/" target="_blank"
+            class="home__social-link">
+            <i class="ri-linkedin-box-fill"></i>
+          </a>
+
+          <a href="https://x.com/Szangbengono" target="_blank" class="home__social-link">
+            <i class="ri-twitter-x-fill"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--=============== Product ===============-->
+  <section class="product section container">
+    <div class="product container">
+      <h2 class="section__title">Create products_</h2>
+
+      <div class="signin-signup">
+        <p class="product__descripion">
+          Fill out the form below to submit a product to the DynamoDB table.
+          <br>
+          <i>Example: Product: Apple, Color: Red, Price: 1.00</i>
+        </p>
+
+        <form id="productForm" class="product-form">
+          <div id="loader" style="display: none">
+            <img src="assets/Spinner-5.gif" alt="Chargement en cours..." />
+          </div>
+          <div class="messageErreur" id="messageErreur" style="display: none">
+            Erreur lors de l'Enregistrement !
+          </div>
+          <div class="messageSuccess" id="messageSuccess" style="display: none">
+            Enregistrement réussie
+          </div>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" id="product-name" name="product-name" placeholder="Product Name" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="text" id="product-color" name="product-color" placeholder="Color" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="number" id="product-price" name="product-price" placeholder="Price" required />
+          </div>
+          <input type="submit" id="save__btn" value="Save" class="btn solid" />
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="callApiButton">
+            List Products
+          </button>
+          <div class="loader1" id="loader" style="display: none"></div>
+        </div>
+        <div>
+          <table id="productTable" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="products_content">
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!--=============== Mixitup ===============-->
+  <script src="scripts/jquery-3.1.0.js"></script>
+  <script src="https://cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+  <script src="scripts/mixitup.min.js"></script>
+  <script src="scripts/aws-cognito-sdk.min.js"></script>
+  <script src="scripts/amazon-cognito-identity.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/session.js"></script>
+
+</body>
+
+</html>

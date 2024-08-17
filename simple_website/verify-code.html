@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTP Verify</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="scripts/jquery-3.1.0.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/aws-cognito-sdk.min.js"></script>
+  <script src="scripts/amazon-cognito-identity.min.js"></script>
+  <script src="scripts/verify-code.js"></script>
+  <link rel="icon" href="assets/icon.png" type="image/x-icon" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <form id="verifyForm" class="verify-code-form">
+          <div id="loader" style="display: none">
+            <img src="assets/Spinner-5.gif" alt="Chargement en cours..." />
+          </div>
+
+          <div class="messageErreur" id="messageErreur" style="display: none">
+            Incorrect Otp Code provided
+          </div>
+          <h2 class="title">OTP Code</h2>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="number" name="code" id="otp-code" placeholder="Code" required />
+          </div>
+          <input type="submit" id="verifybutton" value="Verify" class="btn solid" />
+
+          <!-- <p class="social-text">
+              Resend Code ? <a href="resetPassword.html">Reset here</a>
+            </p> -->
+        </form>
+      </div>
+    </div>
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <img src="assets/verify.svg" class="image" alt="" />
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

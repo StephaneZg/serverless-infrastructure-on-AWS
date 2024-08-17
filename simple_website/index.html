@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignIn</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="scripts/jquery-3.1.0.js"></script>
+  <script src="scripts/aws-cognito-sdk.min.js"></script>
+  <script src="scripts/amazon-cognito-identity.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/login.js"></script>
+
+  <link rel="icon" href="assets/icon.png" type="image/x-icon" />
+
+</head>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form id="signinForm" class="sign-in-form">
+            <div id="loader" style="display: none">
+              <img src="assets/Spinner-5.gif" alt="Chargement en cours..." />
+            </div>
+
+            <div class="messageErreur" id="messageErreur" style="display: none">
+              Nom d'utilisateur ou mot de passe incorrect
+            </div>
+            <h2 class="title">Sign In</h2>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="password" id="password" placeholder="Password" required />
+            </div>
+            <input type="submit" id="loginbutton" value="Login" class="btn solid" />
+
+            <p class="social-text">
+              Forgot password ? Still thinking about it...
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>New here?</h3>
+            <p>Register and become part of the family</p>
+            <a href="register.html"><button class="btn transparent" id="sign-up-btn">
+                Sign Up
+              </button></a>
+          </div>
+          <img src="assets/log.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
