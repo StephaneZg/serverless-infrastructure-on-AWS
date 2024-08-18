@@ -6,7 +6,7 @@
 
 * [Overview](#overview)
 * [Prerequisite](#prerequisite)
-* [Architecture of the project](#architecture-of-the-project)
+* [Project Landing view](#project-landing-view)
   * [Get Started with static website](simple_website/README.md)
   * [Get Started with Terraform configs](terraform/README.md)
 * [Licence](#license)
@@ -33,8 +33,7 @@ In other to smoothly navigate into this project, these are the Technologies and 
     - DynamoDB
     - Cloudwatch
 
-## Architecture of the project
-![serverless-infrastructure.png](simple_website/assets/serverless-infrastructure.png)
+## Project Landing view
 ![serverless-website-login-page.png](simple_website/assets/serverless-website-login-page.png)
 
 ## License
