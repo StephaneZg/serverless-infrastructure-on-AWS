@@ -1,6 +1,3 @@
-// Create clients and set shared const values outside of the handler.
-
-// Create a DocumentClient that represents the query to add an item
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, GetCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
 const client = new DynamoDBClient({});
@@ -16,8 +13,6 @@ export const getByIdHandler = async (event) => {
   // Get id from pathParameters from APIGateway because of `/{id}` at template.yaml
   const emailValue = event.queryStringParameters.email;
 
-  // Get the item from the table
-  // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#get-property
   const params = {
     TableName: tableName,
     KeyConditionExpression: '#email = :email',

@@ -1,41 +1,52 @@
 # Static Website 
 
-## INTRODUCTION
+![serverless-website-login-page.png](assets/serverless-website-login-page.png)
 
-Ce projet est une application Node.js qui implémente un système d'authentification basé sur des sessions utilisant une base de données MySQL pour le stockage des données utilisateur. L'application utilise également Redis pour la gestion des sessions et l'envoi de codes de vérification par e-mail pour la réinitialisation de mot de passe.
+## Overview
 
-## Fonctionnalités de l'authentification
+This repository contains the source code for a static website developed using HTML, CSS, and JavaScript. The website is hosted on AWS S3 and is configured with CloudFront for CDN distribution, Route 53 for DNS management, and Cognito for user authentication.
 
-* **Stockage des données utilisateur**: Les informations des utilisateurs sont stockées dans une base de données MySQL.
-* **Authentification par sessions**: Les sessions utilisateur sont gérées à l'aide de Redis plutôt que de les stocker en mémoire. Chaque session a une durée de validité de 30 minutes, correspondant à la durée de l'authentification.
-* **Accès à la landing page**: Une fois authentifié, l'utilisateur peut accéder à la landing page sans passer par l'écran de login pendant la durée de sa session. Après expiration de cette période, une nouvelle authentification est requise.
-* **Déconnexion sécurisée**: Lorsque l'utilisateur se déconnecte via la landing page, sa session est définitivement coupée, même si elle n'a pas encore expiré. Une nouvelle authentification est requise pour accéder à la landing page par la suite.
+## Architecture
 
-## Réinitialisation de mot de passe
+- **S3 Bucket**: Hosts the static website files.
+- **CloudFront**: Provides CDN services for faster content delivery and caching.
+- **Route 53**: Manages DNS records for the domain name.
+- **Cognito**: Handles user authentication and management.
 
-* **Envoi de code par e-mail**: Pour la réinitialisation de mot de passe, un code de vérification est généré et envoyé à l'utilisateur par e-mail.
-* **Validation du code de vérification**: Le code généré est également stocké dans Redis pendant une durée de 2 minutes. La réinitialisation du mot de passe est validée en comparant le code fourni par l'utilisateur avec celui stocké dans Redis.
+## Project Structure
 
-## Architecture du projet
+- `index.html`: The main HTML file for the website.
+- `css/`: Directory containing CSS files.
+- `scripts/`: Directory containing JavaScript files.
+- `assets/`: Directory for images used in the website.
 
-* **Modèle MVC (Model-View-Controller)**: L'application suit le pattern MVC, avec les répertoires distincts pour chaque couche :
-    * **entities**: Contiennent la définition des modèles de données utilisés dans l'application.
-    * **views**: Les fichiers HTML et CSS utilisés pour afficher l'interface utilisateur.
-    * **controllers**: Logique métier et gestion des requêtes HTTP.
+## Deployment
 
-* **Services**: Contient les scripts JavaScript utilisés par les contrôleurs pour interagir avec la base de données.
-* **Routes**: Contient les fichiers JavaScript qui assignent des contrôleurs aux routes HTTP du serveur.
+The deployment of the website is managed using AWS services. Here is a high-level overview of the deployment process:
 
-## Prérequis
+1. **S3 Bucket Setup**:
+  - Create an S3 bucket and upload your static website files.
+  - Configure the bucket for static website hosting.
+  - Set appropriate bucket policies to allow public access.
 
-Avant de lancer l'application, assurez-vous d'avoir Node.js, MySQL et Redis installés sur votre système.
+2. **CloudFront Distribution**:
+  - Create a CloudFront distribution with the S3 bucket as the origin.
+  - Configure caching, SSL/TLS settings, and other distribution settings as needed.
 
-## Installation
+3. **Route 53 Configuration**:
+  - Create a hosted zone for your domain.
+  - Add DNS records to point to the CloudFront distribution.
 
-1. Cloner ce dépôt sur votre machine.
-2. Installer les dépendances en exécutant **npm install**.
-3. Configurer les variables d'environnement dans un fichier .env en se basant sur le fichier .env.example fourni.
-4. Assurez-vous que MySQL et Redis sont en cours d'exécution sur votre machine.
-5. Lancer l'application en exécutant **npm start**.
+4. **Cognito User Authentication**:
+  - Set up a Cognito user pool for user authentication.
+  - Configure Cognito with the necessary sign-up and sign-in flows.
+  - Integrate Cognito authentication into your website.
 
-### **Martial Kom**
+## Local Development
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+
+To read more about this visit the medium post for on : https://medium.com/@stephane.zangbengono/serverless-infrastructure-on-aws-with-terraform-part-1-hosting-a-static-website-on-s3-18b0ecb00392

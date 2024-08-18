@@ -20,16 +20,10 @@ locals {
   function_base_env = {
     TABLE_NAME = local.dynamo_db_name
   }
+  lambda_logs_retention_in_days = 1
+  lambda_runtime                = "nodejs20.x"
 
-}
-
-# Lambda functions
-module "get_item_by_email_lambda" {
-  source                   = "./modules/lambda"
-  function_name            = "get-product-byemail"
-  function_filename        = "./lambda-functions/handlers/get-by-email-payload.zip"
-  function_logs_retentions = 1
-  function_policy_actions = [
+  lambda_policy_action = [
     "logs:CreateLogGroup",
     "logs:CreateLogStream",
     "logs:PutLogEvents",
@@ -42,7 +36,17 @@ module "get_item_by_email_lambda" {
     "dynamodb:DeleteItem"
   ]
 
-  function_runtime              = "nodejs20.x"
+}
+
+# Lambda functions
+module "get_item_by_email_lambda" {
+  source                   = "./modules/lambda"
+  function_name            = "get-product-byemail"
+  function_filename        = "./lambda-functions/handlers/get-by-email-payload.zip"
+  function_logs_retentions = local.lambda_logs_retention_in_days
+  function_policy_actions  = local.lambda_policy_action
+
+  function_runtime              = local.lambda_runtime
   function_handler              = "get-by-email.getByIdHandler"
   function_permission_principal = local.lambda_permission_principal
   gateway_execution_arn         = module.api_gateway.gateway_execution_arn
@@ -54,21 +58,10 @@ module "get_item_by_email_lambda" {
   source                   = "./modules/lambda"
   function_name            = "getall-product"
   function_filename        = "./lambda-functions/handlers/get-all-items-payload.zip"
-  function_logs_retentions = 1
-  function_policy_actions = [
-    "logs:CreateLogGroup",
-    "logs:CreateLogStream",
-    "logs:PutLogEvents",
-    "logs:Tag*",
-    "dynamodb:GetItem",
-    "dynamodb:PutItem",
-    "dynamodb:Query",
-    "dynamodb:Scan",
-    "dynamodb:UpdateItem",
-    "dynamodb:DeleteItem"
-  ]
+  function_logs_retentions = local.lambda_logs_retention_in_days
+  function_policy_actions = local.lambda_policy_action
 
-  function_runtime              = "nodejs20.x"
+  function_runtime              = local.lambda_runtime
   function_handler              = "get-all-items.getAllItemsHandler"
   function_permission_principal = local.lambda_permission_principal
   gateway_execution_arn         = module.api_gateway.gateway_execution_arn
@@ -80,21 +73,10 @@ module "put_item_lambda" {
   source                   = "./modules/lambda"
   function_name            = "put-product"
   function_filename        = "./lambda-functions/handlers/put-items-payload.zip"
-  function_logs_retentions = 1
-  function_policy_actions = [
-    "logs:CreateLogGroup",
-    "logs:CreateLogStream",
-    "logs:PutLogEvents",
-    "logs:Tag*",
-    "dynamodb:GetItem",
-    "dynamodb:PutItem",
-    "dynamodb:Query",
-    "dynamodb:Scan",
-    "dynamodb:UpdateItem",
-    "dynamodb:DeleteItem"
-  ]
+  function_logs_retentions = local.lambda_logs_retention_in_days
+  function_policy_actions  = local.lambda_policy_action
 
-  function_runtime              = "nodejs20.x"
+  function_runtime              = local.lambda_runtime
   function_handler              = "put-items.putItemHandler"
   function_permission_principal = local.lambda_permission_principal
   gateway_execution_arn         = module.api_gateway.gateway_execution_arn

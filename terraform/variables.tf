@@ -4,20 +4,6 @@ variable "bucket_name" {
   default     = "serveless-website-stephanezg"
 }
 
-variable "account_id" {
-  type        = string
-  description = "The AWS account ID"
-  default     = "123456789012"
-
-  sensitive = true
-}
-
-variable "pages_path" {
-  type        = string
-  description = "The path to the directory containing the website pages"
-  default     = "pages"
-}
-
 variable "assets_path" {
   type        = string
   description = "The path to the directory containing the website assests"

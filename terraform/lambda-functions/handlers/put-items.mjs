@@ -1,6 +1,3 @@
-// Create clients and set shared const values outside of the handler.
-
-// Create a DocumentClient that represents the query to add an item
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 import { randomUUID } from 'crypto';
@@ -21,8 +18,6 @@ export const putItemHandler = async (event) => {
     const price = body.price;
     const product_id = randomUUID()
 
-    // Creates a new item, or replaces an old item with a new item
-    // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
     var params = {
         TableName: tableName,
         Item: { 'email': email, 'name': name, 'color': color, 'price': price, 'product-id': product_id }

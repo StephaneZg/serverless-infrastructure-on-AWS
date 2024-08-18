@@ -1,6 +1,6 @@
 # Website Serverless Infrastructure on AWS
 
-![serverless-website-login-page.png](simple_website/assets/serverless-website-login-page.png)
+![serverless-infrastructure.png](simple_website/assets/serverless-infrastructure.png)
 
 ## Table of Contents
 
@@ -9,6 +9,7 @@
 * [Architecture of the project](#architecture-of-the-project)
   * [Get Started with static website](simple_website/README.md)
   * [Get Started with Terraform configs](terraform/README.md)
+* [Licence](#license)
 
 ## Overview
 
@@ -34,3 +35,7 @@ In other to smoothly navigate into this project, these are the Technologies and 
 
 ## Architecture of the project
 ![serverless-infrastructure.png](simple_website/assets/serverless-infrastructure.png)
+![serverless-website-login-page.png](simple_website/assets/serverless-website-login-page.png)
+
+## License
+The Project is under Apache License Version 2.0, January 2004

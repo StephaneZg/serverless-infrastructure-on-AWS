@@ -43,7 +43,7 @@ resource "aws_route53_record" "website_record" {
 #############################################################
 
 # Route53 resources to perform DNS auto validation
-resource "aws_route53_record" "this" {
+resource "aws_route53_record" "record_validation" {
   for_each = {
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
